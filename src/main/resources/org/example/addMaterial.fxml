@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.AddMaterial"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <Label text="Current cookies:" />
+
+    <TableView fx:id="tblCakes" editable="true">
+        <columns>
+            <TableColumn fx:id="colIdCake" text="Id">
+                <cellValueFactory>
+                    <PropertyValueFactory property="idEntity" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colNameCake" text="Cake Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colIngredientsCake" text="Ingredients">
+                <cellValueFactory>
+                    <PropertyValueFactory property="ingredients"  />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colCaloriesCake" text="Calories">
+                <cellValueFactory>
+                    <PropertyValueFactory property="calories" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colPriceCake" text="Price">
+                <cellValueFactory>
+                    <PropertyValueFactory property="price" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colSugarFreeCake" text="Sugar free">
+                <cellValueFactory>
+                    <PropertyValueFactory property="withoutSugar" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <Label text="Add a cookie:" />
+
+    <TextField fx:id="txtCakeId" promptText="Cake id"/>
+    <TextField fx:id="txtCakeName" promptText="Name"/>
+    <TextField fx:id="txtCakeIngredients" promptText="Ingredients"/>
+    <TextField fx:id="txtCakeCalories" promptText="Calories"/>
+    <TextField fx:id="txtCakePrice" promptText="Price"/>
+    <CheckBox fx:id="chkSugarFree" text="Sugar Free"/>
+
+    <HBox alignment="CENTER" spacing="5">
+        <Button fx:id="btnAddCake" text="Add Cake" onAction="#btnAddCakeClick"/>
+    </HBox>
+
+</VBox>
