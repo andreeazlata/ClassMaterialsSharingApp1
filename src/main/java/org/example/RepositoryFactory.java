@@ -17,7 +17,7 @@ public class RepositoryFactory {
         this.repositoryType = repositoryType;
     }
 
-    public IRepository<Material> getPrajituriRepository() {
+    public IRepository<Material> getMaterialRepository() {
         switch (repositoryType) {
             case JSON_REPOSITORY: return new GsonFileRepository<>("materials.txt", Material.class);
             case INMEMORY_REPOSITORY: return new InMemoryRepository<>();

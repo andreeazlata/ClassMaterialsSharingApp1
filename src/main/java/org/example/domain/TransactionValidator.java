@@ -1,24 +1,23 @@
 package org.example.domain;
 
 
+import org.example.repository.IRepository;
+
 public class TransactionValidator {
     /**
      *
      * @param transaction
-     * @param medicineIRepository
+     * @param materialIRepository
      * @throws Exception
      */
-//    public void validate(Transaction transaction, IRepository<Material> medicineIRepository) throws Exception {
-//        Medicine givenMedicine = medicineIRepository.readOne((transaction.getMaterialId()));
-//        if (givenMedicine == null) {
-//            throw new Exception("There is no medicine with the given id!");
-//        }
-//        if (givenMedicine.getNumberOfitems() < transaction.getNumberOfItems()) {
-//            throw new Exception("Cannot add transaction unless number of items for transaction <= number of items in stock");
-//        }
-////        if(transaction.getClientCard()!=Integer.parseInt(transaction.getClientCard())){
-////            throw new Exception("Client card number is not an integer");
-////        }
-//        }
+    public void validate(Transaction transaction, IRepository<Material> materialIRepository) throws Exception {
+        Material givenMaterial = materialIRepository.readOne((transaction.getMaterialId()));
+       if (givenMaterial == null) {
+            throw new Exception("There is no material with the given id!");
+       }
+        if(transaction.getStudentId()!=Integer.parseInt(String.valueOf(transaction.getStudentId()))){
+            throw new Exception("Client card number is not an integer");
+        }
+        }
     }
 
