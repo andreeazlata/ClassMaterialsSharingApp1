@@ -47,11 +47,11 @@
 
     <Label text="Add a material:" />
 
-    <TextField fx:id="txtCakeId" promptText="Material id"/>
-    <TextField fx:id="txtCakeName" promptText="Name"/>
-    <TextField fx:id="txtCakeIngredients" promptText="Author"/>
-    <TextField fx:id="txtCakeCalories" promptText="Description"/>
-    <TextField fx:id="txtCakePrice" promptText="Number of pages"/>
+    <TextField fx:id="txtMaterialId" promptText="Material id"/>
+    <TextField fx:id="txtMaterialName" promptText="Name"/>
+    <TextField fx:id="txtMaterialAuthor" promptText="Author"/>
+    <TextField fx:id="txtMaterialDescription" promptText="Description"/>
+    <TextField fx:id="txtMaterialNumberOfPages" promptText="Number of pages"/>
 
 
     <HBox alignment="CENTER" spacing="5">

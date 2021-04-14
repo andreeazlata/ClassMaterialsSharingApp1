@@ -1,16 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
+   <HBox>
+      <VBox spacing="5">
+         <children>
+
+            <Label text="Current materials:" />
+
+            <TableView fx:id="tblMaterials" editable="true">
+               <columns>
+                  <TableColumn fx:id="colMaterialId" text="Id">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colMaterialName" text="Material Name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colMaterialAuthor" text="Author">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="ingredients"  />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colMaterialDescription" text="Material Description">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="description" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colMaterialNumberOfPages" text="Material Number Of Pages">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="numberOfPages" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+
+            <Label text="Add a material:" />
+
+            <TextField fx:id="txtMaterialId" promptText="Material id"/>
+            <TextField fx:id="txtMaterialName" promptText="Name"/>
+            <TextField fx:id="txtMaterialAuthor" promptText="Author"/>
+            <TextField fx:id="txtMaterialDescription" promptText="Description"/>
+            <TextField fx:id="txtMaterialNumberOfPages" promptText="Number of pages"/>
+
+            <HBox alignment="CENTER" spacing="5">
+               <Button fx:id="btnAddMaterial" text="Add Material" onAction="#btnAddMaterialClick"/>
+               <Button fx:id="btnUpdateMaterial" text="Update Material" onAction="#btnUpdateMaterialClick"/>
+               <Button fx:id="btnDeleteSelectedMaterial" text="Delete selected Material" onAction="#btnDeleteSelectedMaterialClick"/>
+            </HBox>
+            <!--      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>-->
+            <!--      <Button fx:id="helloButton" text="Say hi" onAction="#sayHi"/>-->
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <VBox spacing="5">
+         <children>
+
+            <Label text="Current transactions:" />
+
+            <TableView fx:id="tblTransactions" editable="true">
+               <columns>
+                  <TableColumn fx:id="colIdTransaction" text="Id">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colMaterialIdentidication" text="Material id">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="materialId" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colStudentId" text="Student id card">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="studentId"  />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colDateAndHour" text="Date and hour">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="dateAndHour" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colNumberOfItems" text="Number of items">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="numberOfItems" />
+                     </cellValueFactory>
+                  </TableColumn>
+
+               </columns>
+            </TableView>
+
+            <Label text="Add a Transaction:" />
+
+            <TextField fx:id="txtTransactionId" promptText="Transaction id"/>
+            <TextField fx:id="txtMaterialIdentification" promptText="ID Material"/>
+            <TextField fx:id="txtStudentId" promptText="Student id card"/>
+            <TextField fx:id="txtDateAndHour" promptText="Date and hour"/>
+            <TextField fx:id="txtNumberOfItems" promptText="Number of items"/>
+
+            <HBox alignment="CENTER" spacing="5">
+               <Button fx:id="btnAddTransaction" text="Add Transaction" onAction="#btnAddTransactionClick"/>
+               <Button fx:id="btnUpdateTransaction" text="Update Transaction" onAction="#btnUpdateTransactionClick"/>
+               <Button fx:id="btnDeleteSelectedTransaction" text="Delete selected transaction" onAction="#btnDeleteSelectedTransactionClick"/>
+            </HBox>
+            <!--      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>-->
+            <!--      <Button fx:id="helloButton" text="Say hi" onAction="#sayHi"/>-->
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </HBox>
+   <HBox spacing="10" alignment="CENTER">
+      <Label text="Search cookies and transactions:" />
+      <TextField fx:id="txtSearchText" promptText="Search text"/>
+      <Button fx:id="btnFullTextSearch" text="Search" onAction="#btnFullTextSearchClick"/>
+   </HBox>
+   <HBox spacing="10" alignment="CENTER">
+      <Label text="Cautare tranzactii incepand cu data si ora:" />
+      <TextField fx:id="txtDateHourStart" promptText="dd.mm.yyyy HH:mm"/>
+      <Label text="Si sfarsind cu data si ora:" />
+      <TextField fx:id="txtDateHourEnd" promptText="dd.mm.yyyy HH:mm"/>
+      <Button fx:id="btnTransactionDateHourSearch" text="Search" onAction="#btnTransactionDateHourSearchClick"/>
+   </HBox>
+<!--   <Button fx:id="btnShowCookiesWithNumberOfTransactions" text="Show cookies with number of transactions" onAction="#btnShowCookiesWithNumberOfTransactionsClick"/>-->
+
+   <Button fx:id="btnUndo" text="Undo" onAction="#btnUndoClick"/>
+   <Button fx:id="btnRedo" text="Redo" onAction="#btnRedoClick"/>
+<!--   <Button fx:id="btnOpenAddCookieWindow" text="Add prajitura in fereastra separata" onAction="#btnOpenAddCookieWindowClick"/>-->
+
 </VBox>

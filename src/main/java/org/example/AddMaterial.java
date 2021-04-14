@@ -33,7 +33,7 @@ public class AddMaterial {
             int id = Integer.parseInt(txtMaterialId.getText());
             String name = txtMaterialName.getText();
             String author = txtMaterialAuthor.getText();
-            String description = txtMaterialDescription.getText());
+            String description = txtMaterialDescription.getText();
             int numberOfPages = Integer.parseInt(txtMaterialNumberOfPages.getText());
 
 

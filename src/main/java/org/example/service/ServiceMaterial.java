@@ -16,11 +16,13 @@ public class ServiceMaterial {
     private final IRepository<Transaction> transactionsRepository;
     private final MaterialValidator materialValidator;
     private Material material;
+    private UndoRedoManager undoRedoManager;
 
-    public ServiceMaterial(IRepository<Material> materialIRepository, IRepository<Transaction> transactionIRepository, MaterialValidator materialValidator) {
+    public ServiceMaterial(IRepository<Material> materialIRepository, IRepository<Transaction> transactionIRepository, MaterialValidator materialValidator, UndoRedoManager undoRedoManager) {
         this.materialIRepository = materialIRepository;
         this.transactionsRepository = transactionIRepository;
         this.materialValidator = materialValidator;
+        this.undoRedoManager = undoRedoManager;
     }
 
 
@@ -49,7 +51,7 @@ public class ServiceMaterial {
             if (p.getName().contains(searchText) ||
                     p.getAuthor().contains(searchText) ||
                     p.getDescription().contains(searchText) ||
-                    String.valueOf(p.getNumberOfPages()).contains(searchText)
+                    String.valueOf(p.getNumberOfPages()).contains(searchText));
  {
                 results.add(p);
             }
@@ -90,7 +92,7 @@ public class ServiceMaterial {
             Material medicine = this.materialIRepository.readOne(idMaterial);
             results.add(new MaterialWithNumberOfUploaders(idMaterial, material.getName(), numberOfPurchases));
         }
-        results.sort(Comparator.comparing(MaterialWithNumberOfUploaders::getNumberOfPurchases).reversed());
+        results.sort(Comparator.comparing(MaterialWithNumberOfUploaders::getNumberOfUploaders).reversed());
         return results;
     }
 
