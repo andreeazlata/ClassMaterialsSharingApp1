@@ -12,54 +12,50 @@
             fx:controller="org.example.AddMaterial"
             prefHeight="400.0" prefWidth="600.0">
 
-    <Label text="Current cookies:" />
+    <Label text="Current materials:" />
 
-    <TableView fx:id="tblCakes" editable="true">
+    <TableView fx:id="tblMaterials" editable="true">
         <columns>
-            <TableColumn fx:id="colIdCake" text="Id">
+            <TableColumn fx:id="colMaterialId" text="Id">
                 <cellValueFactory>
-                    <PropertyValueFactory property="idEntity" />
+                    <PropertyValueFactory property="id" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="colNameCake" text="Cake Name">
+            <TableColumn fx:id="colMaterialName" text="Material Name">
                 <cellValueFactory>
                     <PropertyValueFactory property="name" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="colIngredientsCake" text="Ingredients">
+            <TableColumn fx:id="colMaterialAuthor" text="Author">
                 <cellValueFactory>
-                    <PropertyValueFactory property="ingredients"  />
+                    <PropertyValueFactory property="author"  />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="colCaloriesCake" text="Calories">
+            <TableColumn fx:id="colMaterialDescription" text="Material Description">
                 <cellValueFactory>
-                    <PropertyValueFactory property="calories" />
+                    <PropertyValueFactory property="description" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="colPriceCake" text="Price">
+            <TableColumn fx:id="colMaterialNumberOfPages" text="Material Number Of Pages">
                 <cellValueFactory>
-                    <PropertyValueFactory property="price" />
+                    <PropertyValueFactory property="numberOfPages" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="colSugarFreeCake" text="Sugar free">
-                <cellValueFactory>
-                    <PropertyValueFactory property="withoutSugar" />
-                </cellValueFactory>
-            </TableColumn>
+
         </columns>
     </TableView>
 
-    <Label text="Add a cookie:" />
+    <Label text="Add a material:" />
 
-    <TextField fx:id="txtCakeId" promptText="Cake id"/>
+    <TextField fx:id="txtCakeId" promptText="Material id"/>
     <TextField fx:id="txtCakeName" promptText="Name"/>
-    <TextField fx:id="txtCakeIngredients" promptText="Ingredients"/>
-    <TextField fx:id="txtCakeCalories" promptText="Calories"/>
-    <TextField fx:id="txtCakePrice" promptText="Price"/>
-    <CheckBox fx:id="chkSugarFree" text="Sugar Free"/>
+    <TextField fx:id="txtCakeIngredients" promptText="Author"/>
+    <TextField fx:id="txtCakeCalories" promptText="Description"/>
+    <TextField fx:id="txtCakePrice" promptText="Number of pages"/>
+
 
     <HBox alignment="CENTER" spacing="5">
-        <Button fx:id="btnAddCake" text="Add Cake" onAction="#btnAddCakeClick"/>
+        <Button fx:id="btnAddMaterial" text="Add Material" onAction="#btnAddMaterialClick"/>
     </HBox>
 
 </VBox>

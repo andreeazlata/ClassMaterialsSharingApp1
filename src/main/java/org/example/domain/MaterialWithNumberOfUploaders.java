@@ -1,34 +1,34 @@
 package org.example.domain;
 
 public class MaterialWithNumberOfUploaders {
-    private int idMedicine;
-    private String name;
-    private int numberOfPurchases;
+    private int idMaterial;
+    private String nameMaterial;
+    private int numberOfUploaders;
 
-    public MaterialWithNumberOfUploaders(int idMedicine, String name, int numberOfPurchases) {
-        this.idMedicine = idMedicine;
-        this.name = name;
-        this.numberOfPurchases = numberOfPurchases;
+    public MaterialWithNumberOfUploaders(int idMaterial, String nameMaterial, int numberOfUploaders) {
+        this.idMaterial = idMaterial;
+        this.nameMaterial = nameMaterial;
+        this.numberOfUploaders = numberOfUploaders;
     }
 
-    public int getIdMedicine() {
-        return idMedicine;
+    public int getIdMaterial() {
+        return idMaterial;
     }
 
-    public String getName() {
-        return name;
+    public String getNameMaterial() {
+        return nameMaterial;
     }
 
-    public int getNumberOfPurchases() {
-        return numberOfPurchases;
+    public int getNumberOfUploaders() {
+        return numberOfUploaders;
     }
 
     @Override
     public String toString() {
         return "MaterialWithNumberOfUploaders{" +
-                "idMedicine=" + idMedicine +
-                ", name='" + name + '\'' +
-                ", numberOfPurchases=" + numberOfPurchases +
+                "idMaterial=" + idMaterial +
+                ", nameMaterial='" + nameMaterial + '\'' +
+                ", numberOfUploaders=" + numberOfUploaders +
                 '}';
     }
 }
