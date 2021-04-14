@@ -15,7 +15,7 @@
                <columns>
                   <TableColumn fx:id="colMaterialId" text="Id">
                      <cellValueFactory>
-                        <PropertyValueFactory property="id" />
+                        <PropertyValueFactory property="idEntity" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn fx:id="colMaterialName" text="Material Name">
@@ -25,7 +25,7 @@
                   </TableColumn>
                   <TableColumn fx:id="colMaterialAuthor" text="Author">
                      <cellValueFactory>
-                        <PropertyValueFactory property="ingredients"  />
+                        <PropertyValueFactory property="author"  />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn fx:id="colMaterialDescription" text="Material Description">
@@ -70,7 +70,7 @@
                <columns>
                   <TableColumn fx:id="colIdTransaction" text="Id">
                      <cellValueFactory>
-                        <PropertyValueFactory property="id" />
+                        <PropertyValueFactory property="idEntity" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn fx:id="colMaterialIdentidication" text="Material id">
