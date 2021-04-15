@@ -5,14 +5,15 @@ public class Material extends Entity {
     private String author;
     private String description;
     private int numberOfPages;
-    private enum classes{A,B,C,D}
+    private int uploaderId;
 
-    public Material(int idEntity, String name, String author, String description, int numberOfPages) {
+    public Material(int idEntity, String name, String author, String description, int numberOfPages, int uploaderId) {
         super(idEntity);
         this.name = name;
         this.author = author;
         this.description = description;
         this.numberOfPages = numberOfPages;
+        this.uploaderId = uploaderId;
     }
 
     public String getName() {
@@ -31,6 +32,10 @@ public class Material extends Entity {
         return numberOfPages;
     }
 
+    public int getUploaderId() {
+        return uploaderId;
+    }
+
     @Override
     public String toString() {
         return "Material{" +
@@ -38,6 +43,7 @@ public class Material extends Entity {
                 ", author='" + author + '\'' +
                 ", description='" + description + '\'' +
                 ", numberOfPages=" + numberOfPages +
+                ", uploaderId=" + uploaderId +
                 '}';
     }
 }

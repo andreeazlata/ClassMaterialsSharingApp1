@@ -2,27 +2,27 @@ package org.example.domain;
 
 public class StudentWithNumberOfUploads {
 
-    private int clientCard;
-    private int numberOfPurchases;
+    private int studentId;
+    private int numberOfUploads;
 
-    public StudentWithNumberOfUploads(int clientCard, int numberOfPurchases) {
-        this.clientCard = clientCard;
-        this.numberOfPurchases = numberOfPurchases;
+    public StudentWithNumberOfUploads(int studentId, int numberOfUploads) {
+        this.studentId = studentId;
+        this.numberOfUploads = numberOfUploads;
     }
 
-    public int getClientCard() {
-        return clientCard;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public int getNumberOfPurchases() {
-        return numberOfPurchases;
+    public int getNumberOfUploads() {
+        return numberOfUploads;
     }
 
     @Override
     public String toString() {
-        return "ClientCardsWithNumberOfPurchases{" +
-                "clientCard=" + clientCard +
-                ", numberOfPurchases=" + numberOfPurchases +
+        return "StudentWithNumberOfUploads{" +
+                "studentId=" + studentId +
+                ", numberOfUploads=" + numberOfUploads +
                 '}';
     }
 }

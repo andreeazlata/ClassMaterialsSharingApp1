@@ -38,6 +38,11 @@
                         <PropertyValueFactory property="numberOfPages" />
                      </cellValueFactory>
                   </TableColumn>
+                  <TableColumn fx:id="colUploaderId" text="Uploader Id">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="uploaderId" />
+                     </cellValueFactory>
+                  </TableColumn>
                </columns>
             </TableView>
 
@@ -48,6 +53,7 @@
             <TextField fx:id="txtMaterialAuthor" promptText="Author"/>
             <TextField fx:id="txtMaterialDescription" promptText="Description"/>
             <TextField fx:id="txtMaterialNumberOfPages" promptText="Number of pages"/>
+            <TextField fx:id="txtUploaderId" promptText="Uploader Id"/>
 
             <HBox alignment="CENTER" spacing="5">
                <Button fx:id="btnAddMaterial" text="Add Material" onAction="#btnAddMaterialClick"/>
@@ -73,7 +79,7 @@
                         <PropertyValueFactory property="idEntity" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colMaterialIdentidication" text="Material id">
+                  <TableColumn fx:id="colMaterialIdentification" text="Material id">
                      <cellValueFactory>
                         <PropertyValueFactory property="materialId" />
                      </cellValueFactory>
@@ -117,9 +123,59 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
+      <VBox spacing="5">
+         <children>
+
+            <Label text="Current students enrolled:" />
+
+            <TableView fx:id="tblStudents" editable="true">
+               <columns>
+                  <TableColumn fx:id="colStudentIdentification" text="Id">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="idEntity" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colStudentName" text="Student name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colDepartment" text="Student department">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="department"  />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colNumberOfUploads" text="Number Of Uploads">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="numberOfUploads"  />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+
+            <Label text="Add a Student:" />
+
+            <TextField fx:id="txtStudentIdentification" promptText="Student id"/>
+            <TextField fx:id="txtStudentName" promptText="Student name"/>
+            <TextField fx:id="txtDepartment" promptText="Student department"/>
+            <TextField fx:id="txtNumberOfUploads" promptText="Number of uploads"/>
+
+
+            <HBox alignment="CENTER" spacing="5">
+               <Button fx:id="btnAddStudent" text="Add Student" onAction="#btnAddStudentClick"/>
+               <Button fx:id="btnUpdateStudent" text="Update Student" onAction="#btnUpdateStudentClick"/>
+               <Button fx:id="btnDeleteSelectedStudent" text="Delete selected Student" onAction="#btnDeleteSelectedStudentClick"/>
+            </HBox>
+            <!--      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>-->
+            <!--      <Button fx:id="helloButton" text="Say hi" onAction="#sayHi"/>-->
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
    </HBox>
    <HBox spacing="10" alignment="CENTER">
-      <Label text="Search cookies and transactions:" />
+      <Label text="Search materials, transactions and students:" />
       <TextField fx:id="txtSearchText" promptText="Search text"/>
       <Button fx:id="btnFullTextSearch" text="Search" onAction="#btnFullTextSearchClick"/>
    </HBox>
@@ -130,10 +186,10 @@
       <TextField fx:id="txtDateHourEnd" promptText="dd.mm.yyyy HH:mm"/>
       <Button fx:id="btnTransactionDateHourSearch" text="Search" onAction="#btnTransactionDateHourSearchClick"/>
    </HBox>
-<!--   <Button fx:id="btnShowCookiesWithNumberOfTransactions" text="Show cookies with number of transactions" onAction="#btnShowCookiesWithNumberOfTransactionsClick"/>-->
+   <Button fx:id="btnShowStudentsWithNumberOfUploads" text="Show students with number of uploads" onAction="#btnShowStudentsWithNumberOfUploadsClick"/>
 
    <Button fx:id="btnUndo" text="Undo" onAction="#btnUndoClick"/>
    <Button fx:id="btnRedo" text="Redo" onAction="#btnRedoClick"/>
-<!--   <Button fx:id="btnOpenAddCookieWindow" text="Add prajitura in fereastra separata" onAction="#btnOpenAddCookieWindowClick"/>-->
+   <Button fx:id="btnOpenAddMaterialWindow" text="Add material in fereastra separata" onAction="#btnOpenAddMaterialWindowClick"/>
 
 </VBox>

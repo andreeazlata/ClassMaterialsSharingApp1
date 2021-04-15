@@ -29,9 +29,6 @@ public class GsonFileRepository<T extends Entity> implements IRepository<T> {
 
         try {
             JsonReader reader = new JsonReader(new FileReader(this.filename));
-//            Type listType = new TypeToken<ArrayList<T>>() {}.getType();
-            // https://stackoverflow.com/questions/14139437/java-type-generic-as-argument-for-gson
-            // after google search: typetoken generic type
             Type listType = TypeToken.getParameterized(List.class, classType).getType();
             List<T> result = gson.fromJson(reader, listType);
 

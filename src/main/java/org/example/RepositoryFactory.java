@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.domain.Material;
+import org.example.domain.Student;
 import org.example.domain.Transaction;
 import org.example.repository.GsonFileRepository;
 import org.example.repository.IRepository;
@@ -28,6 +29,14 @@ public class RepositoryFactory {
     public IRepository<Transaction> getTransactionRepository() {
         switch (repositoryType) {
             case JSON_REPOSITORY: return new GsonFileRepository<>("transactions.txt", Transaction.class);
+            case INMEMORY_REPOSITORY: return new InMemoryRepository<>();
+            default: return null;
+        }
+    }
+
+    public IRepository<Student> getStudentRepository() {
+        switch (repositoryType) {
+            case JSON_REPOSITORY: return new GsonFileRepository<>("students.txt", Student.class);
             case INMEMORY_REPOSITORY: return new InMemoryRepository<>();
             default: return null;
         }

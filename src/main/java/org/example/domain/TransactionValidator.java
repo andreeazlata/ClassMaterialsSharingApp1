@@ -7,17 +7,15 @@ public class TransactionValidator {
     /**
      *
      * @param transaction
-     * @param materialIRepository
+     * @param studentIRepository
      * @throws Exception
      */
-    public void validate(Transaction transaction, IRepository<Material> materialIRepository) throws Exception {
-        Material givenMaterial = materialIRepository.readOne((transaction.getMaterialId()));
-       if (givenMaterial == null) {
-            throw new Exception("There is no material with the given id!");
+    public void validate(Transaction transaction, IRepository<Student> studentIRepository) throws Exception {
+        Student givenStudent = studentIRepository.readOne((transaction.getStudentId()));
+       if (givenStudent == null) {
+            throw new Exception("There is no student with the given id!");
        }
-        if(transaction.getStudentId()!=Integer.parseInt(String.valueOf(transaction.getStudentId()))){
-            throw new Exception("Client card number is not an integer");
-        }
+
         }
     }
 

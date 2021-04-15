@@ -1,8 +1,6 @@
 package org.example.service;
 
-import org.example.domain.Material;
-import org.example.domain.Transaction;
-import org.example.domain.TransactionValidator;
+import org.example.domain.*;
 import org.example.repository.IRepository;
 
 import java.time.LocalDateTime;
@@ -12,15 +10,18 @@ import java.util.List;
 
 public class ServiceTransaction {
     private final IRepository<Transaction> repositoryTransaction;
-    private final IRepository<Material> repositoryMaterial;
+    private final IRepository<Student> repositoryStudent;
     private final TransactionValidator transactionValidator;
+    private UndoRedoManager undoRedoManager;
+    private Transaction transaction;
 
     public ServiceTransaction(IRepository<Transaction> repositoryTransaction,
-                              IRepository<Material> repositoryMaterial,
+                              IRepository<Student> repositoryStudent,
                               TransactionValidator transactionValidator, UndoRedoManager undoRedoManager) {
         this.repositoryTransaction = repositoryTransaction;
-        this.repositoryMaterial = repositoryMaterial;
+        this.repositoryStudent = repositoryStudent;
         this.transactionValidator = transactionValidator;
+        this.undoRedoManager = undoRedoManager;
     }
 
     /**
@@ -34,8 +35,9 @@ public class ServiceTransaction {
      */
     public void addTransaction(int idEntity, int materialId, String dateAndHour, int numberOfItems, int studentId) throws Exception {
         Transaction transaction = new Transaction(idEntity, materialId, dateAndHour, numberOfItems, studentId);
-        this.transactionValidator.validate(transaction, this.repositoryMaterial);
+        this.transactionValidator.validate(transaction, this.repositoryStudent);
         this.repositoryTransaction.create(transaction);
+        this.undoRedoManager.addToUndo(new UndoRedoAddOperation<>(this.repositoryTransaction, transaction));
     }
 
     /**
@@ -49,7 +51,7 @@ public class ServiceTransaction {
      */
     public void updateTransaction(int idEntity, int materialId, String dateAndHour, int numberOfItems, int studentId) throws Exception {
         Transaction transaction = new Transaction(idEntity, materialId, dateAndHour, numberOfItems, studentId);
-        this.transactionValidator.validate(transaction, this.repositoryMaterial);
+        this.transactionValidator.validate(transaction, this.repositoryStudent);
         this.repositoryTransaction.update(transaction);
     }
 
@@ -60,6 +62,7 @@ public class ServiceTransaction {
      */
     public void deleteTransaction(int idEntity) {
         this.repositoryTransaction.delete(idEntity);
+        this.undoRedoManager.addToUndo(new UndoRedoDeleteOperation<>(this.repositoryTransaction, transaction));
     }
 
     /**

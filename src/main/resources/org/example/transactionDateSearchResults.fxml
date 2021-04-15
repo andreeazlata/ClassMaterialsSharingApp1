@@ -20,14 +20,14 @@
                         <PropertyValueFactory property="idEntity" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="colIdCookie" text="Cookie id">
+                <TableColumn fx:id="colIdCookie" text="Material id">
                     <cellValueFactory>
-                        <PropertyValueFactory property="idCookie" />
+                        <PropertyValueFactory property="materialId" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="colClientCard" text="Client card">
+                <TableColumn fx:id="colClientCard" text="Student Id">
                     <cellValueFactory>
-                        <PropertyValueFactory property="clientCard"  />
+                        <PropertyValueFactory property="studentId"  />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn fx:id="colDateAndHour" text="Date and hour">
@@ -35,9 +35,9 @@
                         <PropertyValueFactory property="dateAndHour" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="colNumberOfPieces" text="Number of pieces">
+                <TableColumn fx:id="colNumberOfPieces" text="Number of items">
                     <cellValueFactory>
-                        <PropertyValueFactory property="numberOfPieces" />
+                        <PropertyValueFactory property="numberOfItems" />
                     </cellValueFactory>
                 </TableColumn>
 

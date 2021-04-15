@@ -14,6 +14,7 @@ public class AddMaterial {
     public TextField txtMaterialAuthor;
     public TextField txtMaterialDescription;
     public TextField txtMaterialNumberOfPages;
+    public TextField txtUploaderId;
 
 
     private ServiceMaterial serviceMaterial;
@@ -35,9 +36,10 @@ public class AddMaterial {
             String author = txtMaterialAuthor.getText();
             String description = txtMaterialDescription.getText();
             int numberOfPages = Integer.parseInt(txtMaterialNumberOfPages.getText());
+            int uploaderId = Integer.parseInt(txtUploaderId.getText());
 
 
-            serviceMaterial.addMaterial(id, name, author, description, numberOfPages);
+            serviceMaterial.addMaterial(id, name, author, description, numberOfPages,uploaderId);
 
             this.observableList.clear();
             this.observableList.addAll(this.serviceMaterial.getAll());
