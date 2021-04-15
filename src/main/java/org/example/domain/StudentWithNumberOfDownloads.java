@@ -1,11 +1,11 @@
 package org.example.domain;
 
-public class StudentWithNumberOfUploads {
+public class StudentWithNumberOfDownloads {
 
     private int studentId;
     private int numberOfUploads;
 
-    public StudentWithNumberOfUploads(int studentId, int numberOfUploads) {
+    public StudentWithNumberOfDownloads(int studentId, int numberOfUploads) {
         this.studentId = studentId;
         this.numberOfUploads = numberOfUploads;
     }

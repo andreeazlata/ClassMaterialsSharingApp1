@@ -94,12 +94,6 @@
                         <PropertyValueFactory property="dateAndHour" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colNumberOfItems" text="Number of items">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="numberOfItems" />
-                     </cellValueFactory>
-                  </TableColumn>
-
                </columns>
             </TableView>
 
@@ -109,7 +103,6 @@
             <TextField fx:id="txtMaterialIdentification" promptText="ID Material"/>
             <TextField fx:id="txtStudentId" promptText="Student id card"/>
             <TextField fx:id="txtDateAndHour" promptText="Date and hour"/>
-            <TextField fx:id="txtNumberOfItems" promptText="Number of items"/>
 
             <HBox alignment="CENTER" spacing="5">
                <Button fx:id="btnAddTransaction" text="Add Transaction" onAction="#btnAddTransactionClick"/>
@@ -186,7 +179,7 @@
       <TextField fx:id="txtDateHourEnd" promptText="dd.mm.yyyy HH:mm"/>
       <Button fx:id="btnTransactionDateHourSearch" text="Search" onAction="#btnTransactionDateHourSearchClick"/>
    </HBox>
-   <Button fx:id="btnShowStudentsWithNumberOfUploads" text="Show students with number of uploads" onAction="#btnShowStudentsWithNumberOfUploadsClick"/>
+   <Button fx:id="btnShowStudentsWithNumberOfDownloads" text="Show students with number of downloads" onAction="#btnShowStudentsWithNumberOfDownloadsClick"/>
 
    <Button fx:id="btnUndo" text="Undo" onAction="#btnUndoClick"/>
    <Button fx:id="btnRedo" text="Redo" onAction="#btnRedoClick"/>

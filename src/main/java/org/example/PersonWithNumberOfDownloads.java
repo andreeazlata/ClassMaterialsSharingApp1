@@ -5,12 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-import org.example.domain.StudentWithNumberOfUploads;
+import org.example.domain.StudentWithNumberOfDownloads;
 import org.example.service.ServiceStudent;
 
-public class PersonWithNumberOfUploads {
+public class PersonWithNumberOfDownloads {
 
-    public TableView tblStudentWithUploads;
+    public TableView tblStudentWithDownloads;
     private ServiceStudent serviceStudent;
 
     public void setStudentService(ServiceStudent serviceStudent) {
@@ -22,9 +22,9 @@ public class PersonWithNumberOfUploads {
 
         Platform.runLater(() -> {
 
-            ObservableList<StudentWithNumberOfUploads> studentWithNumberOfUploads = FXCollections.observableArrayList();
-            studentWithNumberOfUploads.addAll(serviceStudent.getStudentWithNumberOfUploads());
-            tblStudentWithUploads.setItems(studentWithNumberOfUploads);
+            ObservableList<StudentWithNumberOfDownloads> studentWithNumberOfDownloads = FXCollections.observableArrayList();
+            studentWithNumberOfDownloads.addAll(serviceStudent.getStudentWithNumberOfDownloads());
+            tblStudentWithDownloads.setItems(studentWithNumberOfDownloads);
         });
     }
 }

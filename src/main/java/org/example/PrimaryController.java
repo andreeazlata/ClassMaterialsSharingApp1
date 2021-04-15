@@ -180,9 +180,8 @@ public class PrimaryController {
             int id = Integer.parseInt(txtTransactionId.getText());
             int materialId = Integer.parseInt(txtMaterialIdentification.getText());
             String dateAndHour = txtDateAndHour.getText();
-            int numberOfItems = Integer.parseInt(txtNumberOfItems.getText());
             int studentId = Integer.parseInt(txtStudentId.getText());
-            transactionService.addTransaction(id, materialId, dateAndHour, numberOfItems, studentId);
+            transactionService.addTransaction(id, materialId, dateAndHour, studentId);
 
             refreshTransactionList();
         } catch (Exception ex) {
@@ -195,9 +194,8 @@ public class PrimaryController {
             int id = Integer.parseInt(txtTransactionId.getText());
             int materialId = Integer.parseInt(txtMaterialIdentification.getText());
             String dateAndHour = txtDateAndHour.getText();
-            int numberOfItems = Integer.parseInt(txtNumberOfItems.getText());
             int studentId = Integer.parseInt(txtStudentId.getText());
-            transactionService.updateTransaction(id, materialId, dateAndHour, numberOfItems, studentId);
+            transactionService.updateTransaction(id, materialId, dateAndHour, studentId);
 
             refreshTransactionList();
         } catch (RuntimeException rex) {
@@ -254,17 +252,17 @@ public class PrimaryController {
         }
     }
 
-    public void btnShowStudentsWithNumberOfUploadsClick(ActionEvent actionEvent) {
+    public void btnShowStudentsWithNumberOfDownloadsClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("studentWithNumberOfUploads.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
 
-            PersonWithNumberOfUploads resultsController = fxmlLoader.getController();
+            PersonWithNumberOfDownloads resultsController = fxmlLoader.getController();
             resultsController.setStudentService(this.serviceStudent);
 
-            stage.setTitle("Students with uploads");
+            stage.setTitle("Students with downloads");
             stage.setScene(scene);
             stage.showAndWait();
         } catch (IOException iex) {

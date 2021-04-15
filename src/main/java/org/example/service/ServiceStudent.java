@@ -55,25 +55,25 @@ public class ServiceStudent {
 
         return results;
     }
-    public List<StudentWithNumberOfUploads> getStudentWithNumberOfUploads() {
-        Map<Integer, Integer> studentWithNumberOfUploads = new HashMap<>();
+    public List<StudentWithNumberOfDownloads> getStudentWithNumberOfDownloads() {
+        Map<Integer, Integer> studentWithNumberOfDownloads = new HashMap<>();
         for (Transaction t : this.transactionsRepository.read()) {
             int studentId = t.getStudentId();
-            if (!studentWithNumberOfUploads.containsKey(studentId)) {
-                studentWithNumberOfUploads.put(studentId, 1);
+            if (!studentWithNumberOfDownloads.containsKey(studentId)) {
+                studentWithNumberOfDownloads.put(studentId, 1);
             } else {
-                studentWithNumberOfUploads.put(studentId, studentWithNumberOfUploads.get(studentId) + 1);
+                studentWithNumberOfDownloads.put(studentId, studentWithNumberOfDownloads.get(studentId) + 1);
             }
         }
-        List<StudentWithNumberOfUploads> results = new ArrayList<>();
-        for (Map.Entry<Integer, Integer> entry : studentWithNumberOfUploads.entrySet()) {
+        List<StudentWithNumberOfDownloads> results = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : studentWithNumberOfDownloads.entrySet()) {
             int studentId = entry.getKey();
             int numberOfUploads = entry.getValue();
 
             Student student = this.studentIRepository.readOne(studentId);
-            results.add(new StudentWithNumberOfUploads(studentId, numberOfUploads));
+            results.add(new StudentWithNumberOfDownloads(studentId, numberOfUploads));
         }
-        results.sort(Comparator.comparing(StudentWithNumberOfUploads::getNumberOfUploads).reversed());
+        results.sort(Comparator.comparing(StudentWithNumberOfDownloads::getNumberOfUploads).reversed());
         return results;
     }
 

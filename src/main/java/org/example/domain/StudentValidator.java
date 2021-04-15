@@ -8,5 +8,6 @@ public class StudentValidator {
         if (student.getName()==null) {
             throw new Exception("The student must have a name");
         }
+
     }
 }

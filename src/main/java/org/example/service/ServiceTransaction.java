@@ -11,47 +11,46 @@ import java.util.List;
 public class ServiceTransaction {
     private final IRepository<Transaction> repositoryTransaction;
     private final IRepository<Student> repositoryStudent;
+    private final IRepository<Material> materialIRepository;
     private final TransactionValidator transactionValidator;
-    private UndoRedoManager undoRedoManager;
+    private final UndoRedoManager undoRedoManager;
     private Transaction transaction;
 
     public ServiceTransaction(IRepository<Transaction> repositoryTransaction,
                               IRepository<Student> repositoryStudent,
+                              IRepository<Material> materialIRepository,
                               TransactionValidator transactionValidator, UndoRedoManager undoRedoManager) {
         this.repositoryTransaction = repositoryTransaction;
         this.repositoryStudent = repositoryStudent;
         this.transactionValidator = transactionValidator;
         this.undoRedoManager = undoRedoManager;
+        this.materialIRepository = materialIRepository;
     }
 
     /**
-     *
      * @param idEntity
      * @param materialId
      * @param dateAndHour
-     * @param numberOfItems
      * @param studentId
      * @throws Exception
      */
-    public void addTransaction(int idEntity, int materialId, String dateAndHour, int numberOfItems, int studentId) throws Exception {
-        Transaction transaction = new Transaction(idEntity, materialId, dateAndHour, numberOfItems, studentId);
-        this.transactionValidator.validate(transaction, this.repositoryStudent);
+    public void addTransaction(int idEntity, int materialId, String dateAndHour, int studentId) throws Exception {
+        Transaction transaction = new Transaction(idEntity, materialId, dateAndHour, studentId);
+        this.transactionValidator.validate(transaction, this.repositoryStudent, this.materialIRepository);
         this.repositoryTransaction.create(transaction);
         this.undoRedoManager.addToUndo(new UndoRedoAddOperation<>(this.repositoryTransaction, transaction));
     }
 
     /**
-     *
      * @param idEntity
      * @param materialId
      * @param dateAndHour
-     * @param numberOfItems
      * @param studentId
      * @throws Exception
      */
-    public void updateTransaction(int idEntity, int materialId, String dateAndHour, int numberOfItems, int studentId) throws Exception {
-        Transaction transaction = new Transaction(idEntity, materialId, dateAndHour, numberOfItems, studentId);
-        this.transactionValidator.validate(transaction, this.repositoryStudent);
+    public void updateTransaction(int idEntity, int materialId, String dateAndHour , int studentId) throws Exception {
+        Transaction transaction = new Transaction(idEntity, materialId, dateAndHour, studentId);
+        this.transactionValidator.validate(transaction, this.repositoryStudent, this.materialIRepository);
         this.repositoryTransaction.update(transaction);
     }
 
@@ -73,32 +72,30 @@ public class ServiceTransaction {
     }
 
 
-
-
-public List<Transaction> getTransactionsByText(String searchText) {
+    public List<Transaction> getTransactionsByText(String searchText) {
         List<Transaction> results = new ArrayList<>();
         for (Transaction t : this.getAll()) {
-        if (String.valueOf(t.getStudentId()).contains(searchText) ||
-        t.getDateAndHour().contains(searchText) ||
-        String.valueOf(t.getNumberOfItems()).contains(searchText)) {
-        results.add(t);
-        }
+            if (String.valueOf(t.getStudentId()).contains(searchText) ||
+                    t.getDateAndHour().contains(searchText))
+            {
+                results.add(t);
+            }
         }
 
         return results;
-        }
+    }
 
-public List<Transaction> getBetweenTwoDateAndTimes(LocalDateTime start, LocalDateTime end) {
+    public List<Transaction> getBetweenTwoDateAndTimes(LocalDateTime start, LocalDateTime end) {
         List<Transaction> results = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-        for (Transaction t: this.getAll()) {
-        String stringDate = t.getDateAndHour();
-        LocalDateTime typedDate = LocalDateTime.parse(stringDate, formatter);
-        if (start.isBefore(typedDate) && typedDate.isBefore(end)) {
-        results.add(t);
-        }
+        for (Transaction t : this.getAll()) {
+            String stringDate = t.getDateAndHour();
+            LocalDateTime typedDate = LocalDateTime.parse(stringDate, formatter);
+            if (start.isBefore(typedDate) && typedDate.isBefore(end)) {
+                results.add(t);
+            }
         }
 
         return results;
-        }
+    }
 }
