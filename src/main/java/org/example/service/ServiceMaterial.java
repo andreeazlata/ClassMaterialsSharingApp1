@@ -13,9 +13,8 @@ public class ServiceMaterial {
     private final IRepository<Transaction> transactionsRepository;
     private final IRepository<Student> studentRepository;
     private final MaterialValidator materialValidator;
-    private Material material;
-
     private final UndoRedoManager undoRedoManager;
+    private Material material;
 
 
     public ServiceMaterial(IRepository<Material> materialIRepository, IRepository<Transaction> transactionIRepository, IRepository<Student> studentRepository, MaterialValidator materialValidator, UndoRedoManager undoRedoManager) {
@@ -80,9 +79,9 @@ public class ServiceMaterial {
         for (Material p : this.getAll()) {
             if (p.getName().contains(searchText) ||
                     p.getAuthor().contains(searchText) ||
-                    p.getDescription().contains(searchText) ||
-                    String.valueOf(p.getNumberOfPages()).contains(searchText)) ;
-            {
+                    String.valueOf(p.getDescription()).contains(searchText) ||
+                    String.valueOf(p.getUploaderId()).contains(searchText) ||
+                    String.valueOf(p.getIdEntity()).contains(searchText)) {
                 results.add(p);
             }
         }

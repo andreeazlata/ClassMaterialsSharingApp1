@@ -76,10 +76,8 @@ public class ServiceStudent {
         for (Student p : this.getAll()) {
             if (p.getName().contains(searchText) ||
                     p.getDepartment().contains(searchText) ||
-                    String.valueOf(p.getIdEntity()).contains(searchText));
-
-
-            {
+                    String.valueOf(p.getIdEntity()).contains(searchText))
+ {
                 results.add(p);
             }
         }

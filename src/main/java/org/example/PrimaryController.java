@@ -234,13 +234,11 @@ public class PrimaryController {
         List<Transaction> transactionResults = transactionService.getTransactionsByText(txtSearchText.getText());
         List<Student> studentResults = serviceStudent.getStudentsByText(txtSearchText.getText());
         materials.clear();
-//        materials.addAll(materialResults);
-
-        transactions.clear();
-        transactions.addAll(transactionResults);
-
         students.clear();
-//        students.addAll(studentResults);
+        transactions.clear();
+        materials.addAll(materialResults);
+        transactions.addAll(transactionResults);
+        students.addAll(studentResults);
     }
 
     // 15.02.2021 20:00
