@@ -9,6 +9,9 @@ public class UndoRedoManager {
     private final Stack<IUndoRedoOperation> undoOperations = new Stack<>();
     private final Stack<IUndoRedoOperation> redoOperations = new Stack<>();
 
+    /**
+     * makes the undo operation.
+     */
     public void doUndo() {
         if (!undoOperations.isEmpty()) {
             IUndoRedoOperation operation = undoOperations.pop();
@@ -17,6 +20,9 @@ public class UndoRedoManager {
         }
     }
 
+    /**
+     * makes the redo operation.
+     */
     public void doRedo() {
         if (!redoOperations.isEmpty()) {
             IUndoRedoOperation operation = redoOperations.pop();
@@ -25,6 +31,10 @@ public class UndoRedoManager {
         }
     }
 
+    /**
+     *
+     * @param undoRedoOperation
+     */
     public void addToUndo(IUndoRedoOperation undoRedoOperation) {
         undoOperations.push(undoRedoOperation);
         redoOperations.clear();

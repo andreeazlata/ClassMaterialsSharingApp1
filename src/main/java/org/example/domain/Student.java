@@ -1,15 +1,15 @@
 package org.example.domain;
 
 public class Student extends Entity {
-    private String name;
-    private String department;
-    private int numberOfUploads;
+    private final String name;
+    private final String department;
 
-    public Student(int idEntity, String name, String department, int numberOfUploads) {
+
+    public Student(int idEntity, String name, String department) {
         super(idEntity);
         this.name = name;
         this.department = department;
-        this.numberOfUploads = numberOfUploads;
+
     }
 
     public String getName() {
@@ -20,20 +20,12 @@ public class Student extends Entity {
         return department;
     }
 
-    public int getNumberOfUploads() {
-        return numberOfUploads;
-    }
-
-    public void setNumberOfUploads(int numberOfUploads) {
-        this.numberOfUploads = numberOfUploads;
-    }
 
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
                 ", department='" + department + '\'' +
-                ", numberOfUploads=" + numberOfUploads +
                 '}';
     }
 }

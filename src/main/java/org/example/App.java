@@ -38,7 +38,7 @@ public class App extends Application {
         UndoRedoManager undoRedoManager = new UndoRedoManager();
         ServiceMaterial serviceMaterial = new ServiceMaterial(materialIRepository, transactionRepository,studentIRepository, materialValidator, undoRedoManager);
         ServiceTransaction serviceTransaction = new ServiceTransaction(transactionRepository, studentIRepository,materialIRepository, transactionValidator, undoRedoManager);
-        ServiceStudent serviceStudent = new ServiceStudent(studentIRepository, transactionRepository, studentValidator, undoRedoManager);
+        ServiceStudent serviceStudent = new ServiceStudent(studentIRepository, transactionRepository,materialIRepository, studentValidator, undoRedoManager);
 
 
         PrimaryController primaryController = fxmlLoader.getController();

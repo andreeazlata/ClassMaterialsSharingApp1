@@ -1,14 +1,14 @@
 package org.example.domain;
 
-public class StudentWithNumberOfDownloads {
+public class StudentWithNumberOfUploads {
 
-    private int studentId;
-    private int numberOfDownloads;
+    private final int studentId;
+    private final int numberOfUploads;
     private String studentName;
 
-    public StudentWithNumberOfDownloads(int studentId, int numberOfDownloads, String studentName) {
+    public StudentWithNumberOfUploads(int studentId, int numberOfUploads, String studentName) {
         this.studentId = studentId;
-        this.numberOfDownloads = numberOfDownloads;
+        this.numberOfUploads = numberOfUploads;
         this.studentName = studentName;
     }
 
@@ -16,8 +16,8 @@ public class StudentWithNumberOfDownloads {
         return studentId;
     }
 
-    public int getNumberOfDownloads() {
-        return numberOfDownloads;
+    public int getNumberOfUploads() {
+        return numberOfUploads;
     }
 
     public String getStudentName() {
@@ -26,9 +26,9 @@ public class StudentWithNumberOfDownloads {
 
     @Override
     public String toString() {
-        return "StudentWithNumberOfDownloads{" +
+        return "StudentWithNumberOfUploads{" +
                 "studentId=" + studentId +
-                ", numberOfDownloads=" + numberOfDownloads +
+                ", numberOfUploads=" + numberOfUploads +
                 ", studentName='" + studentName + '\'' +
                 '}';
     }

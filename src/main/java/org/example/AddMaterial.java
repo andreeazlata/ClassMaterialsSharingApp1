@@ -29,6 +29,11 @@ public class AddMaterial {
         this.tblMaterials.setItems(this.observableList);
     }
 
+    /**
+     * adds a material when the fields are filled in the the button is clicked.
+     * @param actionEvent
+     * @throws Exception
+     */
     public void btnAddMaterialClick(ActionEvent actionEvent) throws Exception {
         try {
             int id = Integer.parseInt(txtMaterialId.getText());

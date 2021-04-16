@@ -48,13 +48,13 @@ public class PrimaryController {
     public TextField txtDateHourEnd;
     public TextField txtStudentName;
     public TextField txtDepartment;
-    private ServiceMaterial serviceMaterial ;
+    private ServiceMaterial serviceMaterial;
     private ServiceTransaction transactionService;
     private ServiceStudent serviceStudent;
 
-    private ObservableList<Material> materials = FXCollections.observableArrayList();
-    private ObservableList<Transaction> transactions = FXCollections.observableArrayList();
-    private ObservableList<Student> students = FXCollections.observableArrayList();
+    private final ObservableList<Material> materials = FXCollections.observableArrayList();
+    private final ObservableList<Transaction> transactions = FXCollections.observableArrayList();
+    private final ObservableList<Student> students = FXCollections.observableArrayList();
     private UndoRedoManager undoRedoManager;
 
     @FXML
@@ -78,15 +78,20 @@ public class PrimaryController {
         this.undoRedoManager = undoRedoManager;
     }
 
+    /**
+     * adds a student when the button is clicked.
+     *
+     * @param actionEvent
+     * @throws Exception
+     */
     public void btnAddStudentClick(ActionEvent actionEvent) throws Exception {
         try {
             int id = Integer.parseInt(txtStudentIdentification.getText());
             String name = txtStudentName.getText();
             String department = txtDepartment.getText();
-            int numberOfUploads =Integer.parseInt(txtNumberOfUploads.getText());
 
 
-            serviceStudent.addStudent(id,name,department,numberOfUploads);
+            serviceStudent.addStudent(id, name, department);
 
             refreshStudentList();
         } catch (Exception rex) {
@@ -94,15 +99,20 @@ public class PrimaryController {
         }
     }
 
+    /**
+     * updates a already existing student when the button is clicked.
+     *
+     * @param actionEvent
+     * @throws Exception
+     */
     public void btnUpdateStudentClick(ActionEvent actionEvent) throws Exception {
         try {
             int id = Integer.parseInt(txtStudentIdentification.getText());
             String name = txtStudentName.getText();
             String department = txtDepartment.getText();
-            int numberOfUploads =Integer.parseInt(txtNumberOfUploads.getText());
 
 
-            serviceStudent.addStudent(id,name,department,numberOfUploads);
+            serviceStudent.updateStudent(id, name, department);
 
             refreshStudentList();
         } catch (Exception rex) {
@@ -110,6 +120,11 @@ public class PrimaryController {
         }
     }
 
+    /**
+     * deletes a selected student when the button is clicked.
+     *
+     * @param actionEvent
+     */
     public void btnDeleteSelectedStudentClick(ActionEvent actionEvent) {
         Student selectedStudent = (Student) tblStudents.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
@@ -122,6 +137,7 @@ public class PrimaryController {
         students.clear();
         students.addAll(serviceStudent.getAll());
     }
+
     public void btnAddMaterialClick(ActionEvent actionEvent) throws Exception {
         try {
             int id = Integer.parseInt(txtMaterialId.getText());
@@ -132,9 +148,10 @@ public class PrimaryController {
             int uploaderId = Integer.parseInt(txtUploaderId.getText());
 
 
-            serviceMaterial.addMaterial(id, name, author, description,numberOfPages, uploaderId);
+            serviceMaterial.addMaterial(id, name, author, description, numberOfPages, uploaderId);
 
             refreshMaterialList();
+            refreshStudentList();
         } catch (Exception rex) {
             Common.showErrorMessage(rex.getMessage());
         }
@@ -149,9 +166,10 @@ public class PrimaryController {
             int numberOfPages = Integer.parseInt(txtMaterialNumberOfPages.getText());
             int uploaderId = Integer.parseInt(txtUploaderId.getText());
 
-            serviceMaterial.updateMaterial(id, name, author, description,numberOfPages,uploaderId);
+            serviceMaterial.updateMaterial(id, name, author, description, numberOfPages, uploaderId);
 
             refreshMaterialList();
+            refreshStudentList();
         } catch (Exception rex) {
             Common.showErrorMessage(rex.getMessage());
         }
@@ -216,13 +234,13 @@ public class PrimaryController {
         List<Transaction> transactionResults = transactionService.getTransactionsByText(txtSearchText.getText());
         List<Student> studentResults = serviceStudent.getStudentsByText(txtSearchText.getText());
         materials.clear();
-        materials.addAll(materialResults);
+//        materials.addAll(materialResults);
 
         transactions.clear();
         transactions.addAll(transactionResults);
 
         students.clear();
-        students.addAll(studentResults);
+//        students.addAll(studentResults);
     }
 
     // 15.02.2021 20:00
@@ -252,23 +270,6 @@ public class PrimaryController {
         }
     }
 
-    public void btnShowStudentsWithNumberOfDownloadsClick(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("studentWithNumberOfUploads.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            Stage stage = new Stage();
-
-            PersonWithNumberOfDownloads resultsController = fxmlLoader.getController();
-            resultsController.setStudentService(this.serviceStudent);
-
-            stage.setTitle("Students with downloads");
-            stage.setScene(scene);
-            stage.showAndWait();
-        } catch (IOException iex) {
-            Common.showErrorMessage(iex.getMessage());
-        }
-    }
 
     public void btnUndoClick(ActionEvent actionEvent) {
         this.undoRedoManager.doUndo();
@@ -298,6 +299,42 @@ public class PrimaryController {
             stage.setTitle("Adaugare material");
             stage.setScene(scene);
             stage.show();
+        } catch (IOException iex) {
+            Common.showErrorMessage(iex.getMessage());
+        }
+    }
+
+    public void btnShowStudentsWithNumberOfDownloadsClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("studentWithNumberOfDownloads.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+
+            PersonWithNumberOfDownloads resultsController = fxmlLoader.getController();
+            resultsController.setStudentService(this.serviceStudent);
+
+            stage.setTitle("Students with downloads");
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException iex) {
+            Common.showErrorMessage(iex.getMessage());
+        }
+    }
+
+    public void btnShowStudentsWithNumberOfUploadsClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("studentWithNumberOfUploads.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+
+            PersonWithNumberOfUploads resultsController = fxmlLoader.getController();
+            resultsController.setStudentService(this.serviceStudent);
+
+            stage.setTitle("Students with uploads");
+            stage.setScene(scene);
+            stage.showAndWait();
         } catch (IOException iex) {
             Common.showErrorMessage(iex.getMessage());
         }

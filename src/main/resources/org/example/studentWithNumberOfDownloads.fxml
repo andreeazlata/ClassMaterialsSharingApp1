@@ -9,24 +9,25 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.PersonWithNumberOfUploads"
+            fx:controller="org.example.PersonWithNumberOfDownloads"
             prefHeight="400.0" prefWidth="600.0">
 
-    <TableView fx:id="tblStudentWithUploads" editable="true">
+    <TableView fx:id="tblStudentWithDownloads" editable="true">
         <columns>
             <TableColumn fx:id="colStudentId" text="Id">
                 <cellValueFactory>
-                    <PropertyValueFactory property="studentId" />
+                    <PropertyValueFactory property="studentId"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="colNumberOfUploads" text="Number of uploads">
+            <TableColumn fx:id="colNumberOfDownloads" text="Number of downloads">
                 <cellValueFactory>
-                    <PropertyValueFactory property="numberOfUploads" />
+                    <PropertyValueFactory property="numberOfDownloads"/>
+
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="colStudentName" text="Name">
                 <cellValueFactory>
-                    <PropertyValueFactory property="studentName" />
+                    <PropertyValueFactory property="studentName"/>
 
                 </cellValueFactory>
             </TableColumn>
