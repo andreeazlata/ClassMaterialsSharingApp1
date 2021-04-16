@@ -13,32 +13,32 @@
 
             <TableView fx:id="tblMaterials" editable="true">
                <columns>
-                  <TableColumn fx:id="colMaterialId" text="Id">
+                  <TableColumn fx:id="colMaterialId" prefWidth="75.0" text="Id">
                      <cellValueFactory>
                         <PropertyValueFactory property="idEntity" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colMaterialName" text="Material Name">
+                  <TableColumn fx:id="colMaterialName" prefWidth="75.0" text="Material Name">
                      <cellValueFactory>
                         <PropertyValueFactory property="name" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colMaterialAuthor" text="Author">
+                  <TableColumn fx:id="colMaterialAuthor" prefWidth="75.0" text="Author">
                      <cellValueFactory>
                         <PropertyValueFactory property="author"  />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colMaterialDescription" text="Material Description">
+                  <TableColumn fx:id="colMaterialDescription" prefWidth="75.0" text="Material Description">
                      <cellValueFactory>
                         <PropertyValueFactory property="description" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colMaterialNumberOfPages" text="Material Number Of Pages">
+                  <TableColumn fx:id="colMaterialNumberOfPages" prefWidth="75.0" text="Material Number Of Pages">
                      <cellValueFactory>
                         <PropertyValueFactory property="numberOfPages" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colUploaderId" text="Uploader Id">
+                  <TableColumn fx:id="colUploaderId" prefWidth="75.0" text="Uploader Id">
                      <cellValueFactory>
                         <PropertyValueFactory property="uploaderId" />
                      </cellValueFactory>
@@ -74,22 +74,22 @@
 
             <TableView fx:id="tblTransactions" editable="true">
                <columns>
-                  <TableColumn fx:id="colIdTransaction" text="Id">
+                  <TableColumn fx:id="colIdTransaction" prefWidth="90.0" text="Id">
                      <cellValueFactory>
                         <PropertyValueFactory property="idEntity" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colMaterialIdentification" text="Material id">
+                  <TableColumn fx:id="colMaterialIdentification" prefWidth="90.0" text="Material id">
                      <cellValueFactory>
                         <PropertyValueFactory property="materialId" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colStudentId" text="Student id card">
+                  <TableColumn fx:id="colStudentId" prefWidth="90.0" text="Student id card">
                      <cellValueFactory>
                         <PropertyValueFactory property="studentId"  />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colDateAndHour" text="Date and hour">
+                  <TableColumn fx:id="colDateAndHour" prefWidth="90.0" text="Date and hour">
                      <cellValueFactory>
                         <PropertyValueFactory property="dateAndHour" />
                      </cellValueFactory>
@@ -123,17 +123,17 @@
 
             <TableView fx:id="tblStudents" editable="true">
                <columns>
-                  <TableColumn fx:id="colStudentIdentification" text="Id">
+                  <TableColumn fx:id="colStudentIdentification" prefWidth="90.0" text="Id">
                      <cellValueFactory>
                         <PropertyValueFactory property="idEntity" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colStudentName" text="Student name">
+                  <TableColumn fx:id="colStudentName" prefWidth="90.0" text="Student name">
                      <cellValueFactory>
                         <PropertyValueFactory property="name" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="colDepartment" text="Student department">
+                  <TableColumn fx:id="colDepartment" prefWidth="90.0" text="Student department">
                      <cellValueFactory>
                         <PropertyValueFactory property="department"  />
                      </cellValueFactory>
@@ -173,11 +173,11 @@
       <TextField fx:id="txtDateHourEnd" promptText="dd.mm.yyyy HH:mm"/>
       <Button fx:id="btnTransactionDateHourSearch" text="Search" onAction="#btnTransactionDateHourSearchClick"/>
    </HBox>
-   <Button fx:id="btnShowStudentsWithNumberOfDownloads" text="Show students with number of downloads" onAction="#btnShowStudentsWithNumberOfDownloadsClick"/>
-   <Button fx:id="btnShowStudentsWithNumberOfUploads" text="Show students with number of uploads" onAction="#btnShowStudentsWithNumberOfUploadsClick"/>
+   <Button fx:id="btnShowStudentsWithNumberOfDownloads" alignment="CENTER_RIGHT" text="Show students with number of downloads" onAction="#btnShowStudentsWithNumberOfDownloadsClick"/>
+   <Button fx:id="btnShowStudentsWithNumberOfUploads" alignment="CENTER_RIGHT" text="Show students with number of uploads" onAction="#btnShowStudentsWithNumberOfUploadsClick"/>
 
    <Button fx:id="btnUndo" text="Undo" onAction="#btnUndoClick"/>
    <Button fx:id="btnRedo" text="Redo" onAction="#btnRedoClick"/>
-   <Button fx:id="btnOpenAddMaterialWindow" text="Add material in fereastra separata" onAction="#btnOpenAddMaterialWindowClick"/>
+   <Button fx:id="btnOpenAddMaterialWindow" alignment= "BOTTOM_LEFT" text="Add material in fereastra separata" onAction="#btnOpenAddMaterialWindowClick"/>
 
 </VBox>

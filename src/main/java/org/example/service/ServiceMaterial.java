@@ -57,6 +57,7 @@ public class ServiceMaterial {
         Material material = new Material(idEntity, name, author, description, numberOfPages, uploaderId);
         this.materialValidator.validate(material, this.studentRepository);
         this.materialIRepository.update(material);
+//        undoRedoManager.addToUndo(new UndoRedoUpdateOperation<>(this.materialIRepository,material));
     }
 
     /**

@@ -273,6 +273,7 @@ public class PrimaryController {
         this.undoRedoManager.doUndo();
 
         this.refreshStudentList();
+        this.refreshMaterialList();
         this.refreshTransactionList();
     }
 
@@ -280,6 +281,7 @@ public class PrimaryController {
         this.undoRedoManager.doRedo();
 
         this.refreshStudentList();
+        this.refreshMaterialList();
         this.refreshTransactionList();
     }
 
